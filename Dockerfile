@@ -6,6 +6,8 @@ ENV RPC_LISTEN_PORT 6800
 ENV BT_LISTEN_PORT 51413
 ENV DHT_LISTEN_PORT 51415
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 RUN apk add --no-cache aria2 busybox unzip supervisor busybox-extras \
 	&& echo "files = /etc/aria2/start.ini" >> /etc/supervisord.conf \
 	&& adduser -D aria2 \
