@@ -16,9 +16,6 @@ RUN apk add --no-cache aria2 busybox unzip supervisor busybox-extras \
 	&& mkdir -p /home/aria2/logs \
 	&& rm -rf /var/lib/apk/lists/*
 
-# gosu version
-ENV GOSU_VERSION 1.11
-
 # gosu install latest
 RUN set -eux; \
 	\
@@ -29,8 +26,8 @@ RUN set -eux; \
 	; \
 	\
 	dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
-	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch"; \
-	wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
+	wget -O /usr/local/bin/gosu "https://haze.site/gosu/gosu-$dpkgArch"; \
+	wget -O /usr/local/bin/gosu.asc "https://haze.site/gosu/gosu-$dpkgArch.asc"; \
 	\
 # verify the signature
 	export GNUPGHOME="$(mktemp -d)"; \
