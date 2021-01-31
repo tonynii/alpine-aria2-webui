@@ -10,7 +10,7 @@ ENV GOSU_VERSION 1.12
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apk/repositories && \
 	apk update && \
-	apk add --no-cache aria2 busybox unzip supervisor busybox-extras && \
+	apk add --no-cache curl aria2 busybox unzip supervisor busybox-extras && \
 	echo "files = /etc/aria2/start.ini" >> /etc/supervisord.conf && \
 	adduser -D aria2 &&\
 	mkdir -p /etc/aria2 &&\
